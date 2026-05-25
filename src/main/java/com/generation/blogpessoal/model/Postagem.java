@@ -1,3 +1,5 @@
+package com.generation.blogpessoal.model;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -20,8 +22,7 @@ public class Postagem {
 	private Long id;
 		
 	@NotBlank(message = "O atributo título é obrigatório!")
-	@Size(min = 5, max = 100, 
-	message = "O atributo título deve ter no minimo 5 e no máximo 100 caracteres.")
+	@Size(min = 5, max = 100, message = "O atributo título deve ter no minimo 5 e no máximo 100 caracteres.")
 	private String titulo; //obrigatório não deixar vazio
 	
 	@NotBlank(message = "O atributo texto é obrigatório!")
