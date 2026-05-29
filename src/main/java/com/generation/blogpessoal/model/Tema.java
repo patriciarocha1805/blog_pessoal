@@ -1,7 +1,8 @@
 package com.generation.blogpessoal.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -9,6 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -27,6 +29,30 @@ public class Tema {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "tema", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties(value = "tema", allowSetters = true)
 	private List<Postagem> postagem;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+	
+	public Tema getTema() {
+	    return tema;
+	}
+
+	public void setTema(Tema tema) {
+	    this.tema = tema;
+	}
+
+	public Usuario getUsuario() {
+	    return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+	    this.usuario = usuario;
+	}
 	
 	public Long getId() {
 		return this.id;
